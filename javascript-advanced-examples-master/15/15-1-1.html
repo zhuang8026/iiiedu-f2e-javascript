@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>範例 15-1-1.html</title>
+</head>
+<body>
+
+    <script>
+    class Person {
+        constructor(height1, width1) {
+            this.height = height1;
+            this.age = null;
+            this.width = width1;
+            this.name = null;
+            console.log('HI');
+            
+        }
+
+        getInfo(data){
+            console.log(data);
+            return `Name: ${this.name}, Height: ${this.height}, Age: ${this.age}, width: ${this.width}`;
+        }
+
+        setAge(age){
+            this.age = age;
+        }
+        setName(name){
+            this.name = name;
+        }
+    }
+
+    let obj = new Person(160, "999px");
+    obj.setAge(17);
+    obj.setName("william");
+    obj.getInfo("teacher so nice!");
+
+    document.write( obj.getInfo() );
+    </script>
+</body>
+</html>

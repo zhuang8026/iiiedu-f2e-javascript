@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>範例 14-2-5.html</title>
+</head>
+<body>
+    <button onclick="startCount()">開始累加</button>
+    <input type="text" id="txt" value="">
+    <button onclick="stopCount()">結束累加</button>
+
+    <script>
+    // 累加數字的變數
+    var countNum = 1;
+
+    // 作為 clearTimeout() 用的變數
+    var t;
+    // var t = ()=> setTimeout(function(){ count() }, 1000); //// test -1
+    
+    document.getElementById("txt").value = "想什么呢！";
+
+    //累加用的函式
+    function count() {
+        // 將當前的 count 值，放到 id=txt 的元素 value 屬性當中
+        document.getElementById("txt").value = countNum;
+
+        // 進行數字的累加
+        countNum = countNum + 1;
+
+        // 運用遞迴的概念，在指定毫秒後進行累加
+        t = setTimeout(function(){ count() }, 1000);
+        // t(); // test -2
+    }
+    
+    //開始累加
+    function startCount() {
+        //執行累加用的函式
+        count();
+        // document.getElementsByTagName("button")[0].setAttribute("disabled", true); // test - 3
+        // document.getElementsByTagName("button")[1].removeAttribute("disabled"); // test - 3
+    }
+    
+    //結束累加
+    function stopCount() {
+        clearTimeout(t);
+        // document.getElementsByTagName("button")[0].removeAttribute("disabled"); // test - 3
+        // document.getElementsByTagName("button")[1].setAttribute("disabled", true); // test - 3
+    }
+    </script>
+</body>
+</html>
